@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <!-- CSS do Sidebar -->
+    <link rel="stylesheet" href="sidebar.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/relatorios.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+
+</head>
+<style>
+    /* header.css */
+
+.main-header {
+    background-color: #007bff; /* Cor de fundo primária */
+    color: #fff;
+    padding: 8px 20px; /* Melhor espaçamento */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #0056b3;
+    height: 60px; /* Altura confortável */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
+    transition: background-color 0.3s ease, height 0.3s ease; /* Transição suave para mudanças */
+}
+
+.main-header:hover {
+    background-color: #0056b3; /* Alteração de cor no hover */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Limite de largura para telas grandes */
+    margin: 0 auto;
+    padding: 0 15px; /* Espaçamento lateral */
+}
+
+.logo h1 {
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: bold;
+    white-space: nowrap; /* Evita quebra de texto no logo */
+    color: #fff;
+    transition: color 0.2s ease;
+}
+
+.logo h1:hover {
+    color: #d4d4d4; /* Efeito visual ao passar o mouse */
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento maior entre os itens */
+}
+
+.user-photo {
+    width: 40px; /* Tamanho confortável da foto */
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-photo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Realce no hover */
+}
+
+.dropdown-toggle {
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-toggle:hover {
+    background-color: #e2e6ea;
+    color: #007bff;
+}
+
+.dropdown-menu {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Sombra mais definida */
+    animation: fadeIn 0.3s ease; /* Animação suave ao abrir */
+    padding: 10px;
+}
+
+.dropdown-menu a {
+    font-size: 0.9rem;
+    color: #343a40;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: block;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+body {
+    margin-top: 60px; /* Compensando a altura do header */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 6px 15px;
+        height: 70px; /* Aumenta altura para usabilidade mobile */
+    }
+
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+
+    .user-photo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .dropdown-toggle {
+        font-size: 0.8rem;
+        padding: 6px 8px;
+    }
+}
+
+</style>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>CRM Condomínio</h1>
+            </div>
+            <div class="user-menu">
+                <img src="src/img/team-3.jpg" alt="Foto do Usuário" class="user-photo">
+                
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Configurações
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="perfil.html">Meu Perfil</a></li>
+                        <li><a class="dropdown-item" href="configuracoes.html">Configurações</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="logout.html">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>CRM Condomínio</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="index.html"><i class="bi bi-house-door"></i> Início</a>
+                </li>
+                <li>
+                    <a href="lista-condominios.html"><i class="bi bi-building"></i> Condomínios</a>
+                </li>
+                <li>
+                    <a href="lista-moradores.html"><i class="bi bi-people"></i> Moradores</a>
+                </li>
+                <li>
+                    <a href="gestao-financeira.html"><i class="bi bi-cash-coin"></i> Financeiro</a>
+                </li>
+                <li>
+                    <a href="relatorios.html"><i class="bi bi-graph-up"></i> Relatórios</a>
+                </li>
+                <li>
+                    <a href="cadastro-condominio.html"><i class="bi bi-plus-square"></i> Cadastro Condominio</a>
+                </li>
+                <li>
+                    <a href="cadastro-morador.html"><i class="bi bi-person-plus"></i> Cadastro Morador</a>
+                </li>
+                <li>
+                    <a href="dashboard.html"><i class="bi bi-speedometer2"></i> Dashboards</a>
+                </li>
+                <li>
+                    <a href="gestao-boletos.html"><i class="bi bi-receipt"></i> Gestão Boletos </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <div id="content">
+            <div class="container mt-4">
+                <h1 class="text-center">Relatórios</h1>
+                <p class="text-center">Bem-vindo à seção de relatórios do sistema CRM Condomínio. Aqui você encontrará gráficos e informações detalhadas.</p>
+
+                <!-- Relatórios -->
+                <div class="row mt-5">
+                    <!-- Gráfico de Ocupação -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header text-center bg-primary text-white">
+                                Ocupação do Condomínio
+                            </div>
+                            <div class="card-body">
+                                <canvas id="graficoOcupacao"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Relatório Financeiro -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header text-center bg-success text-white">
+                                Relatório Financeiro
+                            </div>
+                            <div class="card-body">
+                                <canvas id="graficoFinanceiro"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Relatório de Inadimplências -->
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header text-center bg-danger text-white">
+                                Relatório de Inadimplências
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Morador</th>
+                                            <th>Unidade</th>
+                                            <th>Valor Devido</th>
+                                            <th>Vencimento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>João Silva</td>
+                                            <td>Apto 101</td>
+                                            <td>R$ 500,00</td>
+                                            <td>10/01/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maria Oliveira</td>
+                                            <td>Apto 202</td>
+                                            <td>R$ 300,00</td>
+                                            <td>15/01/2025</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Gráfico de Ocupação
+        const ctxOcupacao = document.getElementById('graficoOcupacao').getContext('2d');
+        new Chart(ctxOcupacao, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ocupado', 'Disponível'],
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: ['#007bff', '#d3d3d3']
+                }]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+
+        // Gráfico Financeiro
+        const ctxFinanceiro = document.getElementById('graficoFinanceiro').getContext('2d');
+        new Chart(ctxFinanceiro, {
+            type: 'bar',
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril'],
+                datasets: [{
+                    label: 'Receita (R$)',
+                    data: [12000, 15000, 10000, 17000],
+                    backgroundColor: '#28a745'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

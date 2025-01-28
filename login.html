@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CRM Condomínio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+            <h2 class="text-center text-primary mb-4">Acessar o Sistema</h2>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="#" class="text-secondary">Esqueceu sua senha?</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manipulador para o formulário de login
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+
+            // Obtém os valores do email e da senha
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Verifica se as credenciais estão corretas
+            if (email === 'gguerlandi@gmail.com' && password === '123456') {
+                // Redireciona para a página index.html
+                window.location.href = 'index.html';
+            } else {
+                // Exibe uma mensagem de erro caso as credenciais sejam inválidas
+                alert('Credenciais inválidas. Tente novamente.');
+            }
+        });
+    </script>
+</body>
+</html>
