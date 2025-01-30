@@ -3,50 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CRM Condomínio</title>
+    <title>Login - Sistema de Gestão de Condomínios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body class="bg-light">
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-            <h2 class="text-center text-primary mb-4">Acessar o Sistema</h2>
-            <form id="loginForm">
+            <div class="text-center mb-4">
+                <i class="fas fa-building text-primary" style="font-size: 3rem;"></i>
+                <h2 class="text-primary mt-2">Bem-vindo</h2>
+                <p class="text-muted">Sistema de Gestão de Condomínios</p>
+            </div>
+            
+            <div id="alertMessage" class="alert d-none" role="alert"></div>
+            
+            <form id="loginForm" novalidate>
                 <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" 
+                               placeholder="Digite seu e-mail" required
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, insira um e-mail válido.
+                    </div>
                 </div>
+                
                 <div class="mb-3">
-                    <label for="password" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" id="password" 
+                               placeholder="Digite sua senha" required minlength="6">
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="invalid-feedback">
+                        A senha deve ter pelo menos 6 caracteres.
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Lembrar-me</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100" id="loginButton">
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                    Entrar
+                </button>
             </form>
+
             <div class="text-center mt-3">
-                <a href="#" class="text-secondary">Esqueceu sua senha?</a>
+                <a href="#" class="text-secondary" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+                    <i class="fas fa-key me-1"></i>Esqueceu sua senha?
+                </a>
             </div>
         </div>
     </div>
 
-    <script>
-        // Manipulador para o formulário de login
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+    <!-- Modal de Recuperação de Senha -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Recuperar Senha</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="mb-3">
+                            <label for="recoveryEmail" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="recoveryEmail" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Link de Recuperação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            // Obtém os valores do email e da senha
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Verifica se as credenciais estão corretas
-            if (email === 'gguerlandi@gmail.com' && password === '123456') {
-                // Redireciona para a página index.html
-                window.location.href = 'index.html';
-            } else {
-                // Exibe uma mensagem de erro caso as credenciais sejam inválidas
-                alert('Credenciais inválidas. Tente novamente.');
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
